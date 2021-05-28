@@ -14,7 +14,7 @@
             if (state.dev === true) {
                 url = 'http://localhost:3000/auth/redirect';
             } else if (state.platform === 'windows') {
-                url = 'https://custom-protocol-tauri/auth/redirect';
+                url = 'https://custom-protocol-taurilocalhost/auth/redirect';
             }
 
             location.replace(url + location.search);
