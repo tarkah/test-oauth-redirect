@@ -1,5 +1,20 @@
 <html>
-  <body>
-  Test
-  </body>
+
+<body>
+
+    <script>
+        const location = window.location;
+        const params = new URLSearchParams(location.search);
+        const state = params.get('state');
+
+        let url = 'test://localhost';
+
+        if (state === 'windows') {
+            url = 'https://custom-protocol-test';
+        }
+
+        location.replace(url + location.search);
+    </script>
+</body>
+
 </html>
