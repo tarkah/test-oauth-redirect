@@ -6,12 +6,15 @@
         window.onload = () => {
             const location = window.location;
             const params = new URLSearchParams(location.search);
-            const state = params.get('state');
+            const state = JSON.parse(params.get('state'));
 
-            let url = 'test://localhost';
+            // Unix / OSX default prod address
+            let url = 'tauri://localhost/auth/redirect';
 
-            if (state === 'windows') {
-                url = 'https://custom-protocol-test';
+            if (state.dev === true) {
+                url = 'http://localhost:3000/auth/redirect';
+            } else if (state.platform === 'windows') {
+                url = 'https://custom-protocol-tauri/auth/redirect';
             }
 
             location.replace(url + location.search);
